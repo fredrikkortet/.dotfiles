@@ -115,7 +115,7 @@ local modkey1      = "Control"
 
 -- personal variables
 --change these variables if you want
-local browser2          = "librewolf"
+local browser           = "librewolf"
 local editor            = os.getenv("EDITOR") or "nvim"
 local editorgui         = "code"
 local filemanager       = "thunar"
@@ -301,7 +301,7 @@ root.buttons(my_table.join(
 globalkeys = my_table.join(
 
     -- {{{ Personal keybindings
-    awful.key({ modkey }, "w", function () awful.util.spawn( browser1 ) end,
+    awful.key({ modkey }, "w", function () awful.util.spawn( browser ) end,
         {description = browser, group = "function keys"}),
     -- dmenu
     awful.key({ modkey, "Shift"   }, "d",
@@ -317,7 +317,7 @@ globalkeys = my_table.join(
 
 
     -- super + ... function keys
-    awful.key({ modkey }, "F1", function () awful.util.spawn( browser1 ) end,
+    awful.key({ modkey }, "F1", function () awful.util.spawn( browser ) end,
         {description = browser, group = "function keys"}),
     awful.key({ modkey }, "F2", function () awful.util.spawn( editorgui ) end,
         {description = editorgui , group = "function keys" }),
@@ -337,14 +337,10 @@ globalkeys = my_table.join(
         {description = mailclient , group = "function keys" }),
     awful.key({ modkey }, "F10", function () awful.util.spawn( mediaplayer ) end,
         {description = mediaplayer , group = "function keys" }),
-    awful.key({ modkey }, "F11", function () awful.util.spawn( "rofi -show run -fullscreen" ) end,
-        {description = "rofi fullscreen" , group = "function keys" }),
     awful.key({ modkey }, "F12", function () awful.util.spawn( "rofi -show run" ) end,
         {description = "rofi" , group = "function keys" }),
 
     -- super + ...
-    awful.key({ modkey }, "c", function () awful.util.spawn( "conky-toggle" ) end,
-        {description = "conky-toggle", group = "super"}),
     awful.key({ modkey }, "e", function () awful.util.spawn( editorgui ) end,
         {description = "run gui editor", group = "super"}),
     awful.key({ modkey }, "h", function () awful.util.spawn( "alacritty -T 'ytop task manager' -e ytop" ) end,
@@ -392,7 +388,7 @@ globalkeys = my_table.join(
     awful.key({ modkey1, altkey   }, "u", function() awful.util.spawn( "pavucontrol" ) end,
         {description = "pulseaudio control", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "v", function() awful.util.spawn( browser ) end,
-        {description = browser1, group = "alt+ctrl"}),
+        {description = browser, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "Return", function() awful.util.spawn(terminal) end,
         {description = terminal, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "m", function() awful.util.spawn( "xfce4-settings-manager" ) end,
@@ -872,56 +868,7 @@ awful.rules.rules = {
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = false } },
-          -- Set applications to always map on the tag 2 on screen 1.
-    --{ rule = { class = "Subl3" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
 
-
-    -- Set applications to always map on the tag 1 on screen 1.
-    -- find class or role via xprop command
-    --{ rule = { class = browser2 },
-      --properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true  } },
-
-    --{ rule = { class = browser1 },
-      --properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true  } },
-
-    --{ rule = { class = "Vivaldi-stable" },
-        --properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true } },
-
-    --{ rule = { class = "Chromium" },
-      --properties = { screen = 1, tag = awful.util.tagnames[1], switchtotag = true  } },
-
-    --{ rule = { class = "Opera" },
-      --properties = { screen = 1, tag = awful.util.tagnames[1],switchtotag = true  } },
-
-    -- Set applications to always map on the tag 2 on screen 1.
-    --{ rule = { class = "Subl3" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2],switchtotag = true  } },
-
-    --{ rule = { class = editorgui },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
-
-    --{ rule = { class = "Brackets" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
-
-    --{ rule = { class = "Code" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
-
-    --    { rule = { class = "Geany" },
-         --  properties = { screen = 1, tag = awful.util.tagnames[2], switchtotag = true  } },
-
-
-    -- Set applications to always map on the tag 3 on screen 1.
-    --{ rule = { class = "Inkscape" },
-        --properties = { screen = 1, tag = awful.util.tagnames[3], switchtotag = true  } },
-
-    -- Set applications to always map on the tag 4 on screen 1.
-    --{ rule = { class = "Gimp" },
-        --properties = { screen = 1, tag = awful.util.tagnames[4], switchtotag = true  } },
-
-    -- Set applications to always map on the tag 5 on screen 1.
-    --{ rule = { class = "Meld" },
-        --properties = { screen = 1, tag = awful.util.tagnames[5] , switchtotag = true  } },
 
 
     -- Set applications to be maximized at startup.
@@ -973,7 +920,6 @@ awful.rules.rules = {
         },
         class = {
           "Arandr",
-          "Arcolinux-welcome-app.py",
           "Blueberry",
           "Galculator",
           "Gnome-font-viewer",
