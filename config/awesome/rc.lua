@@ -506,7 +506,7 @@ globalkeys = my_table.join(
         awful.key({ modkey1, modkey }, "Left",
             function()
                 awful.client.focus.global_bydirection("left")
-                if client.focus then client.focus:raise() end
+                if clienqt.focus then client.focus:raise() end
             end,
             {description = "focus left", group = "client"}),
         awful.key({ modkey1, modkey }, "Right",
@@ -583,7 +583,11 @@ globalkeys = my_table.join(
               {description = terminal, group = "super"}),
     awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    -- awful.key({ modkey, "Shift"   }, "x", awesome.quit, {description = "quit awesome", group = "awesome"}), awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end, {description = "increase master width factor", group = "layout"}), awful.key({ altkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ modkey, "Shift"   }, "x", awesome.quit,
+        {description = "quit awesome", group = "awesome"}), 
+    awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
+        {description = "increase master width factor", group = "layout"}), 
+    awful.key({ altkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
@@ -732,8 +736,7 @@ globalkeys = my_table.join(
               end,
               {description = "lua execute prompt", group = "awesome"})
     --]]
-)
-
+    )
 clientkeys = my_table.join(
     awful.key({ altkey, "Shift"   }, "m",      lain.util.magnify_client,
               {description = "magnify client", group = "client"}),
