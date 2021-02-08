@@ -115,9 +115,7 @@ local modkey1      = "Control"
 
 -- personal variables
 --change these variables if you want
---local browser1          = "vivaldi-stable"
-local browser2          = "firefox"
---local browser3          = "chromium -no-default-browser-check"
+local browser2          = "librewolf"
 local editor            = os.getenv("EDITOR") or "nvim"
 local editorgui         = "code"
 local filemanager       = "thunar"
@@ -236,7 +234,6 @@ local myawesomemenu = {
 awful.util.mymainmenu = freedesktop.menu.build({
     before = {
         { "Awesome", myawesomemenu },
-        --{ "Atom", "atom" },
         -- other triads can be put here
     },
     after = {
@@ -305,7 +302,7 @@ globalkeys = my_table.join(
 
     -- {{{ Personal keybindings
     awful.key({ modkey }, "w", function () awful.util.spawn( browser1 ) end,
-        {description = browser1, group = "function keys"}),
+        {description = browser, group = "function keys"}),
     -- dmenu
     awful.key({ modkey, "Shift"   }, "d",
     function ()
@@ -321,7 +318,7 @@ globalkeys = my_table.join(
 
     -- super + ... function keys
     awful.key({ modkey }, "F1", function () awful.util.spawn( browser1 ) end,
-        {description = browser1, group = "function keys"}),
+        {description = browser, group = "function keys"}),
     awful.key({ modkey }, "F2", function () awful.util.spawn( editorgui ) end,
         {description = editorgui , group = "function keys" }),
     awful.key({ modkey }, "F3", function () awful.util.spawn( "inkscape" ) end,
@@ -350,8 +347,8 @@ globalkeys = my_table.join(
         {description = "conky-toggle", group = "super"}),
     awful.key({ modkey }, "e", function () awful.util.spawn( editorgui ) end,
         {description = "run gui editor", group = "super"}),
-    --awful.key({ modkey }, "h", function () awful.util.spawn( "urxvt -T 'htop task manager' -e htop" ) end,
-        --{description = "htop", group = "super"}),
+    awful.key({ modkey }, "h", function () awful.util.spawn( "alacritty -T 'ytop task manager' -e ytop" ) end,
+        {description = "ytop", group = "super"}),
     awful.key({ modkey }, "r", function () awful.util.spawn( "rofi-theme-selector" ) end,
         {description = "rofi theme selector", group = "super"}),
     awful.key({ modkey }, "t", function () awful.util.spawn( terminal ) end,
@@ -374,24 +371,12 @@ globalkeys = my_table.join(
 
 
     -- ctrl+alt +  ...
-    awful.key({ modkey1, altkey   }, "w", function() awful.util.spawn( "arcolinux-welcome-app" ) end,
-        {description = "ArcoLinux Welcome App", group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "e", function() awful.util.spawn( "arcolinux-tweak-tool" ) end,
-        {description = "ArcoLinux Tweak Tool", group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "Next", function() awful.util.spawn( "conky-rotate -n" ) end,
-        {description = "Xfce appfinder", group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "Prior", function() awful.util.spawn( "conky-rotate -p" ) end,
-        {description = "Xfce appfinder", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "a", function() awful.util.spawn( "xfce4-appfinder" ) end,
         {description = "Xfce appfinder", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "b", function() awful.util.spawn( filemanager ) end,
         {description = filemanager, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "c", function() awful.util.spawn("catfish") end,
         {description = "catfish", group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "f", function() awful.util.spawn( browser2 ) end,
-        {description = browser2, group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "g", function() awful.util.spawn( browser3 ) end,
-        {description = browser3, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "i", function() awful.util.spawn("nitrogen") end,
         {description = nitrogen, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "k", function() awful.util.spawn( "arcolinux-logout" ) end,
@@ -406,7 +391,7 @@ globalkeys = my_table.join(
         {description = terminal, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "u", function() awful.util.spawn( "pavucontrol" ) end,
         {description = "pulseaudio control", group = "alt+ctrl"}),
-    awful.key({ modkey1, altkey   }, "v", function() awful.util.spawn( browser1 ) end,
+    awful.key({ modkey1, altkey   }, "v", function() awful.util.spawn( browser ) end,
         {description = browser1, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "Return", function() awful.util.spawn(terminal) end,
         {description = terminal, group = "alt+ctrl"}),
@@ -416,30 +401,6 @@ globalkeys = my_table.join(
         {description = "Pamac Manager", group = "alt+ctrl"}),
 
     -- alt + ...
-    awful.key({ altkey, "Shift"   }, "t", function () awful.spawn.with_shell( "variety -t  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&" ) end,
-        {description = "Pywal Wallpaper trash", group = "altkey"}),
-    awful.key({ altkey, "Shift"   }, "n", function () awful.spawn.with_shell( "variety -n  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&" ) end,
-        {description = "Pywal Wallpaper next", group = "altkey"}),
-    awful.key({ altkey, "Shift"   }, "u", function () awful.spawn.with_shell( "wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&" ) end,
-        {description = "Pywal Wallpaper update", group = "altkey"}),
-    awful.key({ altkey, "Shift"   }, "p", function () awful.spawn.with_shell( "variety -p  && wal -i $(cat $HOME/.config/variety/wallpaper/wallpaper.jpg.txt)&" ) end,
-        {description = "Pywal Wallpaper previous", group = "altkey"}),
-    awful.key({ altkey }, "t", function () awful.util.spawn( "variety -t" ) end,
-        {description = "Wallpaper trash", group = "altkey"}),
-    awful.key({ altkey }, "n", function () awful.util.spawn( "variety -n" ) end,
-        {description = "Wallpaper next", group = "altkey"}),
-    awful.key({ altkey }, "p", function () awful.util.spawn( "variety -p" ) end,
-        {description = "Wallpaper previous", group = "altkey"}),
-    awful.key({ altkey }, "f", function () awful.util.spawn( "variety -f" ) end,
-        {description = "Wallpaper favorite", group = "altkey"}),
-    awful.key({ altkey }, "Left", function () awful.util.spawn( "variety -p" ) end,
-        {description = "Wallpaper previous", group = "altkey"}),
-    awful.key({ altkey }, "Right", function () awful.util.spawn( "variety -n" ) end,
-        {description = "Wallpaper next", group = "altkey"}),
-    awful.key({ altkey }, "Up", function () awful.util.spawn( "variety --pause" ) end,
-        {description = "Wallpaper pause", group = "altkey"}),
-    awful.key({ altkey }, "Down", function () awful.util.spawn( "variety --resume" ) end,
-        {description = "Wallpaper resume", group = "altkey"}),
     awful.key({ altkey }, "F2", function () awful.util.spawn( "gmrun" ) end,
         {description = "Gmrun", group = "altkey"}),
     awful.key({ altkey }, "F3", function () awful.util.spawn( "xfce4-appfinder" ) end,
@@ -622,12 +583,7 @@ globalkeys = my_table.join(
               {description = terminal, group = "super"}),
     awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
-    -- awful.key({ modkey, "Shift"   }, "x", awesome.quit,
-    --          {description = "quit awesome", group = "awesome"}),
-
-    awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end,
-              {description = "increase master width factor", group = "layout"}),
-    awful.key({ altkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    -- awful.key({ modkey, "Shift"   }, "x", awesome.quit, {description = "quit awesome", group = "awesome"}), awful.key({ altkey, "Shift"   }, "l",     function () awful.tag.incmwfact( 0.05)          end, {description = "increase master width factor", group = "layout"}), awful.key({ altkey, "Shift"   }, "h",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
@@ -995,18 +951,8 @@ awful.rules.rules = {
     { rule = { class = "VirtualBox Machine" },
           properties = { maximized = true } },
 
-    { rule = { class = "Vivaldi-stable" },
-          properties = { maximized = false, floating = false } },
-
-    { rule = { class = "Vivaldi-stable" },
-          properties = { callback = function (c) c.maximized = false end } },
-
-    --IF using Vivaldi snapshot you must comment out the rules above for Vivaldi-stable as they conflict
---    { rule = { class = "Vivaldi-snapshot" },
---          properties = { maximized = false, floating = false } },
-
---    { rule = { class = "Vivaldi-snapshot" },
---          properties = { callback = function (c) c.maximized = false end } },
+    { rule = { class = "signal-desktop" },
+          properties = {floating = false, tag = awful.util.tagnames[3]} },
 
     { rule = { class = "Xfce4-settings-manager" },
           properties = { floating = false } },
