@@ -901,8 +901,8 @@ awful.rules.rules = {
     { rule = { class = "VirtualBox Machine" },
           properties = { maximized = true } },
 
-    { rule = { class = "signal-desktop" },
-          properties = {floating = false, tag = awful.util.tagnames[3]} },
+    { rule = { class = "Signal" },
+          properties = {floating = false, tag = screen[1].tags[3]} },
 
     { rule = { class = "Xfce4-settings-manager" },
           properties = { floating = false } },
