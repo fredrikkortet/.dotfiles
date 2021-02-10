@@ -367,6 +367,8 @@ globalkeys = my_table.join(
 
 
     -- ctrl+alt +  ...
+    awful.key({ modkey1, altkey   }, "f", function() awful.util.spawn( browser ) end,
+            {description = browser, group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "a", function() awful.util.spawn( "xfce4-appfinder" ) end,
         {description = "Xfce appfinder", group = "alt+ctrl"}),
     awful.key({ modkey1, altkey   }, "b", function() awful.util.spawn( filemanager ) end,
@@ -397,8 +399,6 @@ globalkeys = my_table.join(
         {description = "Pamac Manager", group = "alt+ctrl"}),
 
     -- alt + ...
-    awful.key({ altkey }, "F2", function () awful.util.spawn( "gmrun" ) end,
-        {description = "Gmrun", group = "altkey"}),
     awful.key({ altkey }, "F3", function () awful.util.spawn( "xfce4-appfinder" ) end,
         {description = "Xfce appfinder", group = "altkey"}),
 
