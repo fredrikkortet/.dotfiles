@@ -1,7 +1,15 @@
-set fish_greetings
 
 #shell prompt starship
 starship init fish | source
+
+function ex 
+		./home/tipparn/.local/bin/ex $argv
+end 
+
+#set Alias
+alias ls="exa -agGl" 
+#set neovim 
+alias vim="nvim"
 
 ## Colorize the grep command output for ease of use (good for log files)##
 alias grep='grep --color=auto'
@@ -14,7 +22,6 @@ alias wget="wget -c"
 #userlist
 alias userlist="cut -d: -f1 /etc/passwd"
 
-# Aliases for software managment
 # pacman or pm
 alias pacman='sudo pacman --color auto'
 alias update='sudo pacman -Syyu'
@@ -40,11 +47,6 @@ alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "
 alias yta-opus="youtube-dl --extract-audio --audio-format opus "
 alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "
 alias yta-wav="youtube-dl --extract-audio --audio-format wav "
-
 alias ytv-best="youtube-dl -f bestvideo+bestaudio "
 
-function ex 
-		./home/tipparn/.local/bin/ex $argv
-end 
-#set Alias
-alias ls="exa -agGl" 
+

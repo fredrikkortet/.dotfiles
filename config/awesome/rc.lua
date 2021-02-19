@@ -303,14 +303,8 @@ globalkeys = my_table.join(
     -- {{{ Personal keybindings
     awful.key({ modkey }, "w", function () awful.util.spawn( browser ) end,
         {description = browser, group = "function keys"}),
-    -- dmenu
-    awful.key({ modkey, "Shift"   }, "d",
-    function ()
-        awful.spawn(string.format("dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn NotoMonoRegular:bold:pixelsize=14",
-        beautiful.bg_normal, beautiful.fg_normal, beautiful.bg_focus, beautiful.fg_focus))
-	end,
-    {description = "show dmenu", group = "hotkeys"}),
-
+    awful.key({modkey }, "l", function () awful.util.spawn("betterlockscreen --lock blur") end,
+        {description = "lock screen", group = "system"}), 
     -- Function keys
     awful.key({ }, "F12", function () awful.util.spawn( "xfce4-terminal --drop-down" ) end,
         {description = "dropdown terminal" , group = "function keys"}),

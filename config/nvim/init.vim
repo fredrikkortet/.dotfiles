@@ -1,11 +1,3 @@
-" auto-install vim-plug
-if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  "autocmd VimEnter * PlugInstall
-  "autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
 call plug#begin('~/.config/nvim/autoload/plugged')
 
     " Better Syntax Support
@@ -16,21 +8,62 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'jiangmiao/auto-pairs'
     " Status bar for nvim
     Plug 'vim-airline/vim-airline'
-    " Auto complete
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Start screen
     Plug 'mhinz/vim-startify'
     " Show color code
-    Plug 'norcalli/nvim-colorizer.lua'	 				
-    " Battery to the Airline
-    Plug 'lambdalisue/battery.vim'
-    
-    call plug#end()
+    Plug 'norcalli/nvim-colorizer.lua'                  
+    Plug 'neovim/nvim-lspconfig'
+    Plug 'nvim-lua/completion-nvim'
+call plug#end()
 
 " Setup
 set relativenumber
+" active number
+set nu
+" make search act 'normal'
+set incsearch
+" No sound on error
+set noerrorbells
+" little menu
+set wildmenu
+" save it in buffer
+set hidden
+" search more better 
+set nohlsearch
+" no wraping 
+set nowrap
+" search with cases 
+set signcolumn=yes
+"case search
+set smartcase
+"tabs
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set autoindent
+set smartindent
+set scrolloff=8
+set expandtab
+set undodir=$HOME/.undo
+set undofile
 
-"keybindings
+"Enable filetype
+filetype plugin on
+filetype indent on
+
+set expandtab
+syntax on
+
+" keybindings
 map <C-n> :NERDTreeToggle<CR>
 vnoremap <C-c> "+y
 map <C-v> "+P
+"helps with permission-denied
+command! W execute 'w !sudo tee % /dev/null' <bar> edit!
+"setup lspconfig
+set completeopt=menuone,noinsert,noselect
+let g:completion_matching_strategy_list = ['exact','substring','fuzzy']
+
+lua << EOF
+require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
+EOF
