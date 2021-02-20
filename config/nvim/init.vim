@@ -12,8 +12,11 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'mhinz/vim-startify'
     " Show color code
     Plug 'norcalli/nvim-colorizer.lua'                  
+    " lsp & autocomplete
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/completion-nvim'
+    " dracula theme
+    Plug 'dracula/vim'
 call plug#end()
 
 " Setup
@@ -41,8 +44,10 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set autoindent
 set smartindent
+" dont scroll to low 
 set scrolloff=8
 set expandtab
+" make a new undodir
 set undodir=$HOME/.undo
 set undofile
 
@@ -50,7 +55,7 @@ set undofile
 filetype plugin on
 filetype indent on
 
-set expandtab
+" syntax  
 syntax on
 
 " keybindings
@@ -58,7 +63,7 @@ map <C-n> :NERDTreeToggle<CR>
 vnoremap <C-c> "+y
 map <C-v> "+P
 "helps with permission-denied
-command! W execute 'w !sudo tee % /dev/null' <bar> edit!
+"command! W execute 'w !sudo tee % /dev/null' <bar> edit!
 "setup lspconfig
 set completeopt=menuone,noinsert,noselect
 let g:completion_matching_strategy_list = ['exact','substring','fuzzy']
