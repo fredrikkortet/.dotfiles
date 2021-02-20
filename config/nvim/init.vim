@@ -58,6 +58,8 @@ filetype indent on
 " syntax  
 syntax on
 
+colorscheme dracula
+hi Normal guibg=none ctermbg=none 
 " keybindings
 map <C-n> :NERDTreeToggle<CR>
 vnoremap <C-c> "+y
