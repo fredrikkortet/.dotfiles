@@ -15,4 +15,4 @@ run "numlockx on"
 run "volumeicon"
 run "signal-desktop"
 feh --rendomize --bg-fill /home/tipparn/.wallpaper
-xset r rate 300 50
+run "xset r rate 300 50"
