@@ -23,17 +23,17 @@ theme.fg_normal                                 = "#eceff4"
 theme.fg_focus                                  = "#81a1c1"
 theme.fg_urgent                                 = "#b74822"
 theme.bg_normal                                 = "#2e3440"
-theme.bg_focus                                  = "#1E2320"
-theme.bg_urgent                                 = "#3F3F3F"
+theme.bg_focus                                  = "#3b4252"
+theme.bg_urgent                                 = "#4c566a"
 theme.taglist_fg_focus                          = "#81a1c1"
 theme.tasklist_bg_focus                         = "#2e3440"
 theme.tasklist_fg_focus                         = "#81a1c1"
 theme.border_width                              = dpi(2)
-theme.border_normal                             = "#3F3F3F"
-theme.border_focus                              = "#6F6F6F"
-theme.border_marked                             = "#CC9393"
-theme.titlebar_bg_focus                         = "#3F3F3F"
-theme.titlebar_bg_normal                        = "#3F3F3F"
+theme.border_normal                             = "#4c566a"
+theme.border_focus                              = "#434c5e"
+theme.border_marked                             = "#bf616a"
+theme.titlebar_bg_focus                         = "#4c566a"
+theme.titlebar_bg_normal                        = "#4c566a"
 theme.titlebar_bg_focus                         = theme.bg_focus
 theme.titlebar_bg_normal                        = theme.bg_normal
 theme.titlebar_fg_focus                         = theme.fg_focus
@@ -242,11 +242,11 @@ local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
     city_id = 2803138, -- placeholder (Belgium)
     notification_preset = { font = "Noto Sans Mono Medium 10", fg = theme.fg_normal },
-    weather_na_markup = markup.fontfg(theme.font, "#ffffff", "N/A "),
+    weather_na_markup = markup.fontfg(theme.font, "#eceff4", "N/A "),
     settings = function()
         descr = weather_now["weather"][1]["description"]:lower()
         units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(markup.fontfg(theme.font, "#ffffff", descr .. " @ " .. units .. "°C "))
+        widget:set_markup(markup.fontfg(theme.font, "#eceff4", descr .. " @ " .. units .. "°C "))
     end
 })
 
@@ -308,7 +308,7 @@ theme.volume = lain.widget.alsa({
 local neticon = wibox.widget.imagebox(theme.widget_net)
 local net = lain.widget.net({
     settings = function()
-        widget:set_markup(markup.fontfg(theme.font, "#FEFEFE", " " .. net_now.received .. " ↓↑ " .. net_now.sent .. " "))
+        widget:set_markup(markup.fontfg(theme.font, "#eceff1", " " .. net_now.received .. " ↓↑ " .. net_now.sent .. " "))
     end
 })
 
