@@ -3,7 +3,7 @@
 starship init fish | source
 
 function ex 
-		./home/tipparn/.local/bin/ex $argv
+		/home/tipparn/.local/bin/ex $argv
 end 
 
 #set Alias

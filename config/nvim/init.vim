@@ -16,7 +16,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/completion-nvim'
     " dracula theme
-    Plug 'dracula/vim'
+    Plug 'arcticicestudio/nord-vim'
 call plug#end()
 
 " Setup
@@ -58,7 +58,7 @@ filetype indent on
 " syntax  
 syntax on
 
-colorscheme dracula
+colorscheme nord
 hi Normal guibg=none ctermbg=none 
 " keybindings
 map <C-n> :NERDTreeToggle<CR>
@@ -73,4 +73,6 @@ let g:completion_matching_strategy_list = ['exact','substring','fuzzy']
 lua << EOF
 require'lspconfig'.pyright.setup{on_attach=require'completion'.on_attach}
 require'lspconfig'.clangd.setup{on_attach=require'completion'.on_attach}
+require'lspconfig'.jdtls.setup{on_attach=require'completion'.on_attach}
 EOF
+
