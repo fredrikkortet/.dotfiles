@@ -15,6 +15,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " lsp & autocomplete
     Plug 'neovim/nvim-lspconfig'
     Plug 'nvim-lua/completion-nvim'
+    " finder
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     " dracula theme
     Plug 'dracula/vim'
 call plug#end()
@@ -64,6 +66,7 @@ hi Normal guibg=none ctermbg=none
 map <C-n> :NERDTreeToggle<CR>
 vnoremap <C-c> "+y
 map <C-v> "+P
+map <C-p> :FZF<CR>
 "helps with permission-denied
 "command! W execute 'w !sudo tee % /dev/null' <bar> edit!
 "setup lspconfig

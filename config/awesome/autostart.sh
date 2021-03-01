@@ -16,3 +16,6 @@ run "volumeicon"
 run "signal-desktop"
 feh --rendomize --bg-fill /home/tipparn/.wallpaper
 xset r rate 300 50
+setxkbmap -option ctrl:nocaps
+xmodmap -e "keycode 66 = Escape"
+run "sudo $HOME/.config/awesome/scripts/init_blackwidow.py"
