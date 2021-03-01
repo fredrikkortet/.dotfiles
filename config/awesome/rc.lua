@@ -303,8 +303,8 @@ globalkeys = my_table.join(
     -- {{{ Personal keybindings
     awful.key({ modkey }, "w", function () awful.util.spawn( browser ) end,
         {description = browser, group = "function keys"}),
-    awful.key({modkey }, "l", function () awful.util.spawn("betterlockscreen --lock blur") end,
-        {description = "lock screen", group = "system"}), 
+    awful.key({modkey }, "x", function () awful.spawn.with_shell("$HOME/.config/rofi/powermenu/powermenu.sh") end,
+        {description = "powermenu", group = "system"}), 
     -- Function keys
     awful.key({ }, "F12", function () awful.util.spawn( "xfce4-terminal --drop-down" ) end,
         {description = "dropdown terminal" , group = "function keys"}),
@@ -331,7 +331,7 @@ globalkeys = my_table.join(
         {description = mailclient , group = "function keys" }),
     awful.key({ modkey }, "F10", function () awful.util.spawn( mediaplayer ) end,
         {description = mediaplayer , group = "function keys" }),
-    awful.key({ modkey }, "F12", function () awful.util.spawn( "rofi -show run" ) end,
+    awful.key({ modkey }, "F12", function () awful.spawn.with_shell( "$HOME/.config/rofi/launchers/colorful/launcher.sh" ) end,
         {description = "rofi" , group = "function keys" }),
 
     -- super + ...
