@@ -10,7 +10,6 @@ local helpers = require("lain.helpers")
 local naughty = require("naughty")
 local wibox   = require("wibox")
 local string  = string
-
 -- Network infos
 -- lain.widget.net
 
@@ -106,6 +105,7 @@ local function factory(args)
     end
 
     helpers.newtimer("network", timeout, net.update)
+
 
     return net
 end

@@ -29,7 +29,7 @@ local beautiful     = require("beautiful")
 -- Notification library
 local naughty       = require("naughty")
 naughty.config.defaults['icon_size'] = 100
-
+--naughty.suspend()
 --local menubar       = require("menubar")
 
 local lain          = require("lain")
@@ -612,9 +612,9 @@ globalkeys = my_table.join(
               --{description = "show weather", group = "widgets"}),
 
     -- Brightness
-    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 10") end,
+    awful.key({ }, "XF86MonBrightnessUp", function () os.execute("brightnessctl s +10%") end,
               {description = "+10%", group = "hotkeys"}),
-    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 10") end,
+    awful.key({ }, "XF86MonBrightnessDown", function () os.execute("brightnessctl s 10%-") end,
               {description = "-10%", group = "hotkeys"}),
 
     -- ALSA volume control
