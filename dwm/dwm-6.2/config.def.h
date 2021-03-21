@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-
+#define TERMINAL "alacritty";
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -83,7 +83,7 @@ static const char *termcmd[]  = { "alacritty", NULL };
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          {TERMINAL } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -116,7 +116,20 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} }, 
+	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },//restart without logout 
+
+    //special keys
+    {0, XF86Calculator,          spawn,  SHCMD(TERMINAL " -e bc") },
+    {0, XF86AudioMute,           spawn,  SHCMD("pamixer -t") },
+    {0, XF86AudioLowerVolume,    spawn,  SHCMD("pamixer -i 2") },
+    {0, XF86AudioRaiseVolume,    spawn,  SHCMD("pamixer -d 2") },
+    {0, XF86AudioMicMute,        spawn,  SHCMD("pactl set-source-mute @DEAFUALT_SOURCE@ toggle") },
+    {0, XF86MonBrightnessDown,   spawn,  SHCMD("brightnessctl s 5%-") },
+    {0, XF86MonBrightnessUp,     spawn,  SHCMD("brightnessctl s +10%") },
+    {0, XF86AudioPrev,           spawn,  SHCMD("") },
+    {0, XF86AudioPlay,           spawn,  SHCMD("") },
+    {0, XF86AudioNext,           spawn,  SHCMD("") },
+    
 };
 
 /* button definitions */
