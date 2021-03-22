@@ -1,5 +1,5 @@
 /* See LICENSE file for copyright and license details. */
-#define TERMINAL "alacritty";
+#define TERMINAL "alacritty"
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
@@ -78,12 +78,13 @@ static const Layout layouts[] = {
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+
+#include <X11/XF86keysym.h>//add XF86 keys
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
-	{ MODKEY|ShiftMask,             XK_Return, spawn,          {TERMINAL } },
+	{ MODKEY|ShiftMask,             XK_Return, spawn,          SHCMD(TERMINAL)  },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -119,16 +120,18 @@ static Key keys[] = {
 	{ MODKEY|ControlMask|ShiftMask, XK_q,      quit,           {1} },//restart without logout 
 
     //special keys
-    {0, XF86Calculator,          spawn,  SHCMD(TERMINAL " -e bc") },
-    {0, XF86AudioMute,           spawn,  SHCMD("pamixer -t") },
-    {0, XF86AudioLowerVolume,    spawn,  SHCMD("pamixer -i 2") },
-    {0, XF86AudioRaiseVolume,    spawn,  SHCMD("pamixer -d 2") },
-    {0, XF86AudioMicMute,        spawn,  SHCMD("pactl set-source-mute @DEAFUALT_SOURCE@ toggle") },
-    {0, XF86MonBrightnessDown,   spawn,  SHCMD("brightnessctl s 5%-") },
-    {0, XF86MonBrightnessUp,     spawn,  SHCMD("brightnessctl s +10%") },
-    {0, XF86AudioPrev,           spawn,  SHCMD("") },
-    {0, XF86AudioPlay,           spawn,  SHCMD("") },
-    {0, XF86AudioNext,           spawn,  SHCMD("") },
+    {0, XF86XK_Calculator,          spawn,  SHCMD(TERMINAL " -e bc") },
+    {0, XF86XK_AudioMute,           spawn,  SHCMD("pamixer -t") },
+    {0, XF86XK_AudioLowerVolume,    spawn,  SHCMD("pamixer -d 2") },
+    {0, XF86XK_AudioRaiseVolume,    spawn,  SHCMD("pamixer -i 2") },
+    {0, XF86XK_AudioMicMute,        spawn,  SHCMD("pactl set-source-mute @DEAFUALT_SOURCE@ toggle") },
+    {0, XF86XK_MonBrightnessDown,   spawn,  SHCMD("brightnessctl s 5%-") },
+    {0, XF86XK_MonBrightnessUp,     spawn,  SHCMD("brightnessctl s +10%") },
+    {0, XF86XK_AudioPrev,           spawn,  SHCMD("") },
+    {0, XF86XK_AudioPlay,           spawn,  SHCMD("") },
+    {0, XF86XK_AudioNext,           spawn,  SHCMD("") },
+
+    {MODKEY,                        XK_x,   spawn,      SHCMD("$HOME/.config/rofi/powermenu/powermenu.sh") },
     
 };
 
